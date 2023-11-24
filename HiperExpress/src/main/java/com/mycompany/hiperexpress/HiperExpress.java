@@ -3,8 +3,8 @@ package com.mycompany.hiperexpress;
 public class HiperExpress {
     
 
+    public static void main(String[] args) {
         
-        /*
         //Criar produto
         Produto produto1 = new Produto("Arroz", 1.5, "Alimento");
         Produto produto2 = new Produto("Feijão", 2.0, "Alimento");
@@ -22,8 +22,8 @@ public class HiperExpress {
         venda.adicionarItemVenda(produto2, 2, estoque);
 
         // Finalização da venda
-        venda.finalizarVenda(); */
+        venda.finalizarVenda(); 
         
         
-    }
+    }}
     
