@@ -11,6 +11,16 @@ private Date dataVenda;
     public Venda() {
         this.itensVenda = new ArrayList<>();
         this.dataVenda = new Date();
+        
+        
+    }
+
+    public Date getDataVenda() {
+        return dataVenda;
+    }
+
+    public void setDataVenda(Date dataVenda) {
+        this.dataVenda = dataVenda;
     }
 
     public void adicionarItemVenda(Produto produto, int quantidade, Estoque estoque) {
