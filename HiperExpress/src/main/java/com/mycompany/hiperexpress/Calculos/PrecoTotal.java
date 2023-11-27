@@ -10,4 +10,3 @@ public static float TotalCompra(int quantidade, float preco,float soma)
         return soma;
     }
 }
-    
