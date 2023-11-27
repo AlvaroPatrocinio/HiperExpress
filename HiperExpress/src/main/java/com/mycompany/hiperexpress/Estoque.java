@@ -74,6 +74,15 @@ public class Estoque {
         }
         return null;
     }
+    
+    public boolean verificarEstoqueSuficiente(Produto produto, int quantidade) {
+    int estoqueAtual = obterQuantidadeEstoque(produto);
+    return estoqueAtual >= quantidade;
+}
+
+public int obterQuantidadeEstoque(Produto produto) {
+    return estoqueProdutos.getOrDefault(produto, 0);
+}
 
     public List<Produto> getProdutos() {
         return new ArrayList<>(estoqueProdutos.keySet());

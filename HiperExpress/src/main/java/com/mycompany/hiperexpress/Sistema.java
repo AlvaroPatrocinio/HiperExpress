@@ -9,6 +9,7 @@ public class Sistema {
     private static Scanner input = new Scanner(System.in);
     private static Scanner input2 = new Scanner(System.in);
     private static ArrayList<Produto> produtos;
+    private static ArrayList<Produto> carrinho;
     private static List<Caixa> caixas;
     private Estoque estoque = new Estoque();
     private static Sistema instance;
@@ -43,6 +44,15 @@ public class Sistema {
         produtos = new ArrayList<>();
     }
     
+       private Produto encontrarProdutoPorNome(String nome){
+    for (Produto produto : produtos) {
+        if (produto.getNome().equalsIgnoreCase(nome)) {
+            return produto;
+        }
+    }
+     return null;
+    }
+      
     public void menuadm(){
         
          System.out.println("----------------------------------------------");
@@ -52,7 +62,7 @@ public class Sistema {
         System.out.println("----------------------------------------------");
         System.out.println("/    Opção 1 - Cadastrar de Produto     /");
         System.out.println("/    Opção 2 - Listar Estoque    /");
-        System.out.println("/    Opção 3 - Realizar Compra     /");
+        System.out.println("/    Opção 3 - Realizar Venda     /");
         System.out.println("/    Opção 4 - Carrinho     /");
         System.out.println("/    Opção 5 - Sair     /");
         
@@ -75,11 +85,43 @@ public class Sistema {
                 int Produtoestoque = input.nextInt();
                 estoque.adicionarProduto(produto1, Produtoestoque);
                 System.out.println("------------Produto Adicionado!------------");
+                menuadm();
                            
             case 2:
                 estoque.exibirEstoque();
-      }
-     }
+                menuadm();
+                
+            case 3:
+            // Criar uma nova venda
+    Venda venda = new Venda();
+    System.out.println("Produtos disponíveis no estoque:");
+    for (Produto produto : produtos) {
+        System.out.println(produto);
     }
     
-    
+    System.out.println("Digite o nome do produto para adicionar ao carrinho (ou 'fim' para finalizar): ");
+    String nomeProduto;
+    while (!(nomeProduto = input2.nextLine()).equalsIgnoreCase("fim")) 
+    {
+        Produto produtoSelecionado = encontrarProdutoPorNome(nomeProduto);
+        if (produtoSelecionado != null) {
+            System.out.println("Digite a quantidade desejada: ");
+            int quantidade = input.nextInt();
+            if (estoque.verificarEstoqueSuficiente(produtoSelecionado, quantidade)) {
+                venda.adicionarItemVenda(produtoSelecionado, quantidade, estoque);
+                estoque.removerProduto(produtoSelecionado, quantidade);
+            } else {
+                System.out.println("Estoque insuficiente para o produto selecionado.");
+            }
+        } else {
+            System.out.println("Produto não encontrado.");
+        }
+
+        System.out.println("Digite o nome do próximo produto (ou 'fim' para finalizar): ");
+    }
+    // Finalizar a venda
+    venda.finalizarVenda();
+    menuadm();
+     }
+
+}}
