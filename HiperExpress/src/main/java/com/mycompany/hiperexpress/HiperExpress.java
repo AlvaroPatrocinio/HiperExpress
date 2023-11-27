@@ -18,7 +18,7 @@ public static void main(String[] args) {
        
             
 
-        /*
+        /* Teste de Comunicação
         // Adicionar produtos
         estoque.adicionarProduto(produto1, 50);
         estoque.adicionarProduto(produto2, 30);
