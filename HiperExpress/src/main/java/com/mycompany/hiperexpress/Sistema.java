@@ -1,4 +1,5 @@
 package com.mycompany.hiperexpress;
+import com.mycompany.hiperexpress.implement.json.ProdutosJson;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -63,18 +64,25 @@ public class Sistema {
                 
             case 1:
                 System.out.println("Digite o nome do Produto: ");
-            String Produtonome = input2.nextLine();
+                    String Produtonome = input2.nextLine();
                 System.out.println("Digite o preço do Produto: ");
-            Double Produtopreco = input.nextDouble();
+                    Double Produtopreco = input.nextDouble();
                 System.out.println("Digite a Categoria Desejada: ");
                 System.out.println("-HortiFruti\n-Alimentos \n-Congelados \n-Bebidas");
-             String ProdutoCategoria  = input2.nextLine();
-              Produto produto1 = new Produto(Produtonome, Produtopreco, ProdutoCategoria);   
-              produtos.add(produto1);
+                    String ProdutoCategoria  = input2.nextLine();
+                    
+                Produto produto1 = new Produto(Produtonome, Produtopreco, ProdutoCategoria);   
+                    produtos.add(produto1);
                 System.out.println("Digite a quantidade a dar entrada no estoque: ");
-                int Produtoestoque = input.nextInt();
-                estoque.adicionarProduto(produto1, Produtoestoque);
+                    int Produtoestoque = input.nextInt();
+                    
+                    estoque.adicionarProduto(produto1, Produtoestoque);
+                    
                 System.out.println("------------Produto Adicionado!------------");
+                
+                // Chamando o método para escrever os produtos no arquivo JSON
+                ProdutosJson.escreverProdutosParaJson(produtos, "Dados-Produto-HiperExpress.json");
+                    break;
                            
             case 2:
                 estoque.exibirEstoque();
