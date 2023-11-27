@@ -3,10 +3,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
 public class HiperExpress {
     
+     private static List<Caixa> caixas;
+
+     static {
+        // Inicialização da lista de caixas
+        caixas = new ArrayList<>();
+        caixas.add(new Caixa(1, "Rápida"));
+        caixas.add(new Caixa(2, "Preferencial"));
+        caixas.add(new Caixa(3, "Normal"));
+        caixas.add(new Caixa(4, "Normal"));
+        caixas.add(new Caixa(5, "Normal"));
+    }
+
+    // Acessar os caixas
+    public static List<Caixa> getCaixas() {
+        return caixas;
+    }
+
 
     public static void main(String[] args) {
+
         
         //Criar produto
         Produto produto1 = new Produto("Arroz", 1.5, "Alimento");
@@ -27,6 +46,12 @@ public class HiperExpress {
         // Finalização da venda
         venda.finalizarVenda(); 
         
-        
-    }}
+        // Caixas
+       
+        List<Caixa> testcaixas = getCaixas();
+        for (Caixa caixa : testcaixas) {
+            System.out.println(caixa);
+        }
+    }
     
+}
