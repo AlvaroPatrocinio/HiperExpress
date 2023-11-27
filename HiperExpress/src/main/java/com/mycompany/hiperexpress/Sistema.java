@@ -65,7 +65,8 @@ public class Sistema {
         System.out.println("/    Opção 3 - Realizar Venda     /");
         System.out.println("/    Opção 4 - Carrinho     /");
         System.out.println("/    Opção 5 - Sair     /");
-         System.out.println("/   Opção 6 - Cadastrar de Cliente     /");
+        System.out.println("/   Opção 6 - Cadastrar de Cliente     /");
+        System.out.println("/   Opção 7 - Listar Clientes     /");
         
         int option = input.nextInt();
         switch (option){
@@ -192,11 +193,18 @@ public class Sistema {
                         System.out.println("Opção invalida! ");
    
                 }
-       
+            case 7:
+        System.out.println("----------CLIENTES CADASTRADOS----------");
+        System.out.println("Quantidade total: "+ HiperExpress.ClienteCadastrado().size()+ " clientes cadastrados no sistema.");
+        System.out.println(HiperExpress.getClienteCadastrado());
+    }
+      
+    
 
      }
 
-}}
+}
+
 
     
 

@@ -9,6 +9,14 @@ private static ArrayList<Cliente> clienteCadastrado = new ArrayList<>();
 public static ArrayList<Cliente> ClienteCadastrado(){
 return clienteCadastrado;
     }
+public static ArrayList<Cliente> getClienteCadastrado() {
+        return clienteCadastrado;
+    }
+public static void setClienteCadastrado(ArrayList<Cliente> clienteCadastrado) {
+        HiperExpress.clienteCadastrado = clienteCadastrado;
+    }
+private static Funcionario FunCadastrado[] = new Funcionario[15];
+private static ArrayList<Administrador> AdmCadastrado = new ArrayList<>();
 
       
 public static void main(String[] args) {
