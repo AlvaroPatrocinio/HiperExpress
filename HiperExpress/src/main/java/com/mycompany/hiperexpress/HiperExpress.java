@@ -33,8 +33,21 @@ public class HiperExpress {
 
         // Criação do estoque
         Estoque estoque = new Estoque();
+        
+        // Adicionar produtos
         estoque.adicionarProduto(produto1, 50);
         estoque.adicionarProduto(produto2, 30);
+        
+        // Remover produtos
+        estoque.removerProduto(produto2, 15);
+        estoque.removerProduto(produto1, 25);
+        
+        // Verificar Produto
+        estoque.verificarEstoque(produto1);
+        estoque.verificarEstoque(produto2);
+        
+        // Exibir estoque
+        estoque.exibirEstoque();
 
         // Criação da venda
         Venda venda = new Venda();
