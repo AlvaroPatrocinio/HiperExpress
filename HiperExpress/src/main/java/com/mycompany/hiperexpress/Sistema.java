@@ -65,6 +65,7 @@ public class Sistema {
         System.out.println("/    Opção 3 - Realizar Venda     /");
         System.out.println("/    Opção 4 - Carrinho     /");
         System.out.println("/    Opção 5 - Sair     /");
+         System.out.println("/   Opção 6 - Cadastrar de Cliente     /");
         
         int option = input.nextInt();
         switch (option){
@@ -92,7 +93,7 @@ public class Sistema {
                 menuadm();
                 
             case 3:
-            // Criar uma nova venda
+
     Venda venda = new Venda();
     System.out.println("Produtos disponíveis no estoque:");
     for (Produto produto : produtos) {
@@ -119,9 +120,84 @@ public class Sistema {
 
         System.out.println("Digite o nome do próximo produto (ou 'fim' para finalizar): ");
     }
-    // Finalizar a venda
-    venda.finalizarVenda();
-    menuadm();
+                venda.finalizarVenda();
+                System.out.println("\"/    Opção 1 - Voltar ao menu Inicial     /\"");
+                System.out.println("\"/    Opção 2 - Sair     /\"");
+                int fim = input.nextInt();
+                switch(fim){
+                    case 1: 
+                        menuadm();
+                    case 2:
+                        System.out.println("-----Obrigado pela preferência! Volte Sempre!-----");
+                        System.exit(0);
+                    default:
+                        System.out.println("Opção invalida! ");
+                }
+ 
+    
+            case 4:
+            
+    
+            case 5:
+            System.out.println("-----Obrigado pela preferência! Volte Sempre!-----");
+            System.exit(0);
+            
+            case 6:
+        boolean cpfExiste = false;
+        Scanner scanCliente = new Scanner(System.in);        
+        System.out.println("----------CADASTRO DE CLIENTES----------");
+        Cliente novoCliente = new Cliente();
+        System.out.printf("Nome completo: ");
+        novoCliente.setNome(scanCliente.nextLine());
+        System.out.printf("Telefone: ");
+        novoCliente.setTelefone(scanCliente.nextLine());
+        System.out.printf("Endereco: ");
+        novoCliente.setEndereco(scanCliente.nextLine());
+        System.out.printf("CPF: ");
+        novoCliente.setCpf(scanCliente.nextLine());
+        
+        for(Cliente cliente : HiperExpress.ClienteCadastrado()){
+            if(cliente.getCpf().equals(novoCliente.getCpf())){
+                cpfExiste = true;
+                break;
+            }
+        }
+         if(cpfExiste){
+            System.out.println("Esse cpf já é nosso cliente. Favor verificar.");
+                System.out.println("\"/    Opção 1 - Voltar ao menu Inicial     /\"");
+                System.out.println("\"/    Opção 2 - Sair     /\"");
+                int fim2 = input.nextInt();
+                switch(fim2){
+                    case 1: 
+                    menuadm();
+                    case 2:
+                        System.out.println("-----Obrigado pela preferência! Volte Sempre!-----");
+                        System.exit(0);
+                    default:
+                        System.out.println("Opção invalida! ");      
+                }
+        }
+        HiperExpress.ClienteCadastrado().add(novoCliente);    
+        System.out.println("Cliente cadastrado com sucesso"); 
+        System.out.println("\"/    Opção 1 - Voltar ao menu Inicial     /\"");
+                System.out.println("\"/    Opção 2 - Sair     /\"");
+                int fim2 = input.nextInt();
+                switch(fim2){
+                    case 1: 
+                    menuadm();
+                    case 2:
+                        System.out.println("-----Obrigado pela preferência! Volte Sempre!-----");
+                        System.exit(0);
+                    default:
+                        System.out.println("Opção invalida! ");
+   
+                }
+       
+
      }
 
 }}
+
+    
+
+

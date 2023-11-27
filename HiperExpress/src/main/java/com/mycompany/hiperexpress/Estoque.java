@@ -14,7 +14,7 @@ public class Estoque {
 
     public void adicionarProduto(Produto produto, int quantidade) {
         if (quantidade <= 0) {
-            System.out.println("Quantidade inválida. Adicione uma quantidade positiva.");
+            System.out.println("Quantidade inválida. Adicione uma quantidade valida.");
             return;
         }
 
