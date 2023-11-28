@@ -1,8 +1,6 @@
 package com.mycompany.hiperexpress;
 import java.util.ArrayList;
 
-
-
 public class HiperExpress { 
     
 
