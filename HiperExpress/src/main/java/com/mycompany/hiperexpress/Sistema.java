@@ -114,7 +114,7 @@ public class Sistema {
 
                         // Chamando o método para escrever os produtos no arquivo JSON
                         ProdutosJson.escreverProdutosParaJson(produtos, "Dados-Produto-HiperExpress.json");
-
+                        exibirInicio();
                         menuadm();
                         break;
 
@@ -126,12 +126,13 @@ public class Sistema {
                         int Produtoremoveestoque = input.nextInt();
                         estoque.removerProduto(encontrarProdutoPorNome(Produtoremovenome), Produtoremoveestoque);
                         System.out.println(encontrarProdutoPorNome(Produtoremovenome) +  " Removido");
-                        
                         menuadm();
 
                     case 3:
                         // Exibir Estoque
+                        exibirInicio();
                         estoque.exibirEstoque();
+                        exibirInicio();
                         menuadm();
                         
                     case 4:
@@ -139,10 +140,12 @@ public class Sistema {
                         System.out.println("Insira o nome do Produto: ");
                         String Produtopesquisarnome = input2.nextLine();
                         estoque.verificarEstoque(encontrarProdutoPorNome(Produtopesquisarnome));
+                        exibirInicio();
                         menuadm();
 
 
                     case 5:
+                        exibirInicio();
                         System.out.println("-----Obrigado pela preferência! Volte Sempre!-----");
                         System.exit(0);
 
