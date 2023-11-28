@@ -1,4 +1,5 @@
 package com.mycompany.hiperexpress;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -10,8 +11,8 @@ public class Venda {
     private Date dataVenda;
 
     public Venda() {
-       this.itensVenda = new ArrayList<>();
-       this.dataVenda = Date.from(Instant.now());
+        this.itensVenda = new ArrayList<>();
+        this.dataVenda = Date.from(Instant.now());
 
     }
 
@@ -52,6 +53,7 @@ public class Venda {
     }
 
     private static class ItemVenda {
+
         private Produto produto;
         private int quantidade;
 
@@ -63,6 +65,7 @@ public class Venda {
         public double calcularSubtotal() {
             return produto.getValorDoProduto() * quantidade;
         }
+
         public Produto getProduto() {
             return produto;
         }
@@ -78,15 +81,14 @@ public class Venda {
         public void setQuantidade(int quantidade) {
             this.quantidade = quantidade;
         }
-        
 
         @Override
         public String toString() {
-            return "ItemVenda{" +
-                    "Produto=" + produto.getNome() +
-                    ", Quantidade=" + quantidade +
-                    ", Subtotal=" + calcularSubtotal() +
-                    '}';
+            return "ItemVenda{"
+                    + "Produto=" + produto.getNome()
+                    + ", Quantidade=" + quantidade
+                    + ", Subtotal=" + calcularSubtotal()
+                    + '}';
         }
     }
 }

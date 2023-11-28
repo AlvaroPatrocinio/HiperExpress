@@ -1,4 +1,5 @@
-package com.mycompany.hiperexpress; 
+package com.mycompany.hiperexpress;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
@@ -74,15 +75,15 @@ public class Estoque {
         }
         return null;
     }
-    
-    public boolean verificarEstoqueSuficiente(Produto produto, int quantidade) {
-    int estoqueAtual = obterQuantidadeEstoque(produto);
-    return estoqueAtual >= quantidade;
-}
 
-public int obterQuantidadeEstoque(Produto produto) {
-    return estoqueProdutos.getOrDefault(produto, 0);
-}
+    public boolean verificarEstoqueSuficiente(Produto produto, int quantidade) {
+        int estoqueAtual = obterQuantidadeEstoque(produto);
+        return estoqueAtual >= quantidade;
+    }
+
+    public int obterQuantidadeEstoque(Produto produto) {
+        return estoqueProdutos.getOrDefault(produto, 0);
+    }
 
     public List<Produto> getProdutos() {
         return new ArrayList<>(estoqueProdutos.keySet());
