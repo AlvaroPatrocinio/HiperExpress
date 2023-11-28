@@ -5,13 +5,15 @@ public class Funcionario {
    private String nome;
    private String senha;
    private int id;
+   private String CPF;
    
-   public Funcionario (String nome, String senha, int id){
+   public Funcionario (String nome, String senha, String CPF){
        this.nome = nome;
        this.senha = senha;
-       this.id = id;
+       this.CPF = CPF;
    }
-
+   
+     
     public String getNome() {
         return nome;
     }
@@ -35,15 +37,24 @@ public class Funcionario {
     public void setId(int id) {
         this.id = id;
     }
+
+    public String getCPF() {
+        return CPF;
+    }
+
+    public void setCPF(String CPF) {
+        this.CPF = CPF;
+    }
+    
+    
    
     @Override
     public String toString() {
-    return String.format("""
-                         Funcionario: {
-                           Senha: '%s',
-                           ID: %.2f,
-                         }""",
-        nome, senha, id
-    );
+        return "\n------------------------------------------------------------------------"+""
+             + "\nNOME = " + this.getNome() + ""
+             + "\nSENHA = " + this.getSenha() + ""
+             + "\nID = " + this.getId() + ""
+             + "\nCPF = " + this.getCPF()+ "" + "\n" +
+              "------------------------------------------------------------------------";
    
 }}

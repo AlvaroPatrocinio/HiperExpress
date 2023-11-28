@@ -41,6 +41,12 @@ public class Cliente {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
+
+    public String getTelefone() {
+        return telefone;
+    }
+    
+    
     
     public String getEndereco() {
         return endereco;
@@ -60,16 +66,14 @@ public class Cliente {
 
     
      @Override
-    public String toString() {
-    return String.format("""
-                         Cliente {
-                           Nome: '%s',
-                           Telefone: %.2f,
-                           Endereco: '%s',
-                           CPF: %d
-                         }""",
-        nome, telefone, endereco, cpf
-    );
-  
-}
+    public String toString(){
+        
+        return "\n------------------------------------------------------------------------"+""
+             + "\nNOME = " + this.getNome() + ""
+             + "\nTELEFONE = " + this.getTelefone() + ""
+             + "\nENDERECO = " + this.getEndereco()+ ""
+             + "\nCPF = " + this.getCpf()+ "" + "\n" +
+               "------------------------------------------------------------------------";
+
+    }
 }

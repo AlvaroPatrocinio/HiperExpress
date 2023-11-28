@@ -1,10 +1,12 @@
 package com.mycompany.hiperexpress;
 import java.util.ArrayList;
-import java.util.List;
-      
+import java.util.Iterator;
+
+
 public class HiperExpress { 
-private static ArrayList<Produto> produtos;
-private static List<Caixa> caixas;
+    
+
+//ArrayList e encapsulamento de Clientes.
 private static ArrayList<Cliente> clienteCadastrado = new ArrayList<>();
 public static ArrayList<Cliente> ClienteCadastrado(){
 return clienteCadastrado;
@@ -15,17 +17,35 @@ public static ArrayList<Cliente> getClienteCadastrado() {
 public static void setClienteCadastrado(ArrayList<Cliente> clienteCadastrado) {
         HiperExpress.clienteCadastrado = clienteCadastrado;
     }
-private static Funcionario FunCadastrado[] = new Funcionario[15];
-private static ArrayList<Administrador> AdmCadastrado = new ArrayList<>();
 
-      
+
+//ArrayList e encapsulamento de Funcionário.
+private static ArrayList<Funcionario> funcionarioCadastrado = new ArrayList<>();
+public static ArrayList<Funcionario> getFuncionarioCadastrado() {
+        return funcionarioCadastrado;
+    }
+public static void setFuncionarioCadastrado(ArrayList<Funcionario> funcionarioCadastrado) {
+        HiperExpress.funcionarioCadastrado = funcionarioCadastrado;
+    }
+
+
+//ArrayList e encapsulamento de Administrador.
+private static ArrayList<Administrador> AdmCadastrado = new ArrayList<>();
+public static ArrayList<Administrador> getAdmCadastrado() {
+        return AdmCadastrado;
+    }
+public static void setAdmCadastrado(ArrayList<Administrador> AdmCadastrado) {
+        HiperExpress.AdmCadastrado = AdmCadastrado;
+    }
+
+
 public static void main(String[] args) {
     Sistema sistema = Sistema.getInstance();
     sistema.menuadm();
-    
-    
+
     }
 }
+
 
 
        

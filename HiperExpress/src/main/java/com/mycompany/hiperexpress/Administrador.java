@@ -2,15 +2,18 @@
 package com.mycompany.hiperexpress;
 
 public class Administrador extends Funcionario {
+    
     private boolean adm;
     
-    public Administrador(String nome, String senha, int id){
-        super(nome, senha, id);
-        this.adm = true;
+    
+    public Administrador(String nome, String senha, String CPF){
+        super(nome, senha, CPF);
+        this.setAdm(true);
     }
-
-    public boolean isAdm() {
-        return adm;
+    
+    
+       public boolean isAdm() {
+       return adm;
     }
 
     public void setAdm(boolean adm) {
@@ -18,17 +21,16 @@ public class Administrador extends Funcionario {
     }
     
     
+
     @Override
     public String toString() {
-    return String.format("""
-                         ADM {
-                           Nome: '%s',
-                           senha: %.2f,
-                           iID: '%s',
-                           adm: %d
-                         }""",
-        this.getNome(), this.getSenha(), this.getId(), this.isAdm()
-    );
+        return "\n------------------------------------------------------------------------"+""
+             + "\nNOME = " + this.getNome() + ""
+             + "\nSENHA = " + this.getSenha() + ""
+             + "\nCPF = " + this.getCPF() + ""
+             + "\nADMINSTRADOR = " + this.isAdm()+'\n' + '\n'+
+                "------------------------------------------------------------------------";
+
   }
 }
 
