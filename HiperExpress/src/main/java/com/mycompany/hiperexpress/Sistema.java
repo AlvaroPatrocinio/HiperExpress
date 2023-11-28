@@ -520,7 +520,7 @@ if (CPFFExistente) {
                                     System.out.println("-----Obrigado pela preferência! Volte Sempre!-----");
                                     System.exit(0);
                                 default:
-                                    System.out.println("Opção invalida! ");
+                                    System.out.println("Opção invalida!");
                             }}
 }                
             case 5:
