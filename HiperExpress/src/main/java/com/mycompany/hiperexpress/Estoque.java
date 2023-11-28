@@ -17,7 +17,7 @@ public class Estoque {
 
     public void adicionarProduto(Produto produto, int quantidade) {
         if (quantidade <= 0) {
-            System.out.println("Quantidade inválida. Adicione uma quantidade positiva.");
+            System.out.println("Quantidade inválida. Adicione uma quantidade valida.");
             return;
         }
 
@@ -77,6 +77,15 @@ public class Estoque {
         }
         return null;
     }
+    
+    public boolean verificarEstoqueSuficiente(Produto produto, int quantidade) {
+    int estoqueAtual = obterQuantidadeEstoque(produto);
+    return estoqueAtual >= quantidade;
+}
+
+public int obterQuantidadeEstoque(Produto produto) {
+    return estoqueProdutos.getOrDefault(produto, 0);
+}
 
     public List<Produto> getProdutos() {
         return new ArrayList<>(estoqueProdutos.keySet());

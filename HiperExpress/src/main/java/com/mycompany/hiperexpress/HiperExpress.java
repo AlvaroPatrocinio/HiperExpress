@@ -1,25 +1,29 @@
 package com.mycompany.hiperexpress;
 import java.util.ArrayList;
 import java.util.List;
-        
-public class HiperExpress {
-    
+      
+public class HiperExpress { 
 private static ArrayList<Produto> produtos;
-
 private static List<Caixa> caixas;
+private static ArrayList<Cliente> clienteCadastrado = new ArrayList<>();
+public static ArrayList<Cliente> ClienteCadastrado(){
+return clienteCadastrado;
+    }
 
-private Estoque estoque = new Estoque();
-        
-        
+      
 public static void main(String[] args) {
-       
-       Sistema sistema = Sistema.getInstance();
-       sistema.menuadm();
-       
+    Sistema sistema = Sistema.getInstance();
+    sistema.menuadm();
+    
+    
+    }
+}
 
-        
 
-        /*
+       
+            
+
+        /* Teste de Comunicação
         // Adicionar produtos
         estoque.adicionarProduto(produto1, 50);
         estoque.adicionarProduto(produto2, 30);
@@ -53,5 +57,4 @@ public static void main(String[] args) {
         } */
     
     
-    }
-}
+    
