@@ -13,6 +13,6 @@ Universidade Federal dos Vales do Jequitinhonha e Mucuri - (UFVJM).
 
 >Autores: Álvaro Patrocínio e João Vitor Pinheiros.
 
-## Contato: soares.alvaro@ufvjm.edu.br
+## Contato: soares.alvaro@ufvjm.edu.br, joao.pinheiro@ufvjm.edu.br
 
 The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
