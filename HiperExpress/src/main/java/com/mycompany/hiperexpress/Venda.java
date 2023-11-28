@@ -58,6 +58,15 @@ public class Venda {
 
         System.out.println("Venda cancelada com sucesso.");
     }
+     
+     public void recuperarRegistroVenda() {
+        System.out.println("---- Registro da Venda ----");
+        for (ItemVenda itemVenda : itensVenda) {
+            System.out.println(itemVenda);
+        }
+        System.out.println("Total da venda: " + calcularTotalVenda());
+        System.out.println("Venda realizada em: " + dataVenda);
+    }
         
 
     public double calcularTotalVenda() {

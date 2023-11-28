@@ -180,7 +180,6 @@ public class Sistema {
                                 int quantidade = input.nextInt();
                                 if (estoque.verificarEstoqueSuficiente(produtoSelecionado, quantidade)) {
                                     venda.adicionarItemVenda(produtoSelecionado, quantidade, estoque);
-                                    estoque.removerProduto(produtoSelecionado, quantidade);
                                 } else {
                                     System.out.println("Estoque insuficiente para o produto selecionado.");
                                 }
@@ -208,11 +207,12 @@ public class Sistema {
                         // Cancelar uma Venda
                         exibirInicio();
                         venda.cancelarVenda(estoque);
-                        System.out.println("Cancelar uma venda");
-
+                        menuadm();
+                        
                     case 3:
-                        // Gerar Registro de Venda
-                        System.out.println("Gerar Registro de Venda");
+                        exibirInicio();
+                        venda.recuperarRegistroVenda();
+                        menuadm();
 
                     case 4:
                         System.out.println("-----Obrigado pela preferência! Volte Sempre!-----");
