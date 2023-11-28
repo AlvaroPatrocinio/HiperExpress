@@ -1,8 +1,8 @@
 ## Projeto Prático da Máteria de Programação Orientada a Objetos
 
-Bem vindos ao repositório do projeto de Mercadinho.
+Bem-vindos ao repositório do projeto de Mercadinho.
 
-## Projeto Documentado com Diagrama de Classe
+Projeto Documentado com Diagrama de Classe
 
 Esse repositório foi incrementado.
 
