@@ -120,15 +120,27 @@ public class Sistema {
 
                     case 2:
                         // remover produto
-                        System.out.println("Removeu um produto:");
+                        System.out.println("Digite o nome do Produto: ");
+                        String Produtoremovenome = input2.nextLine();
+                        System.out.println("Digite a quantidade a dar baixa no estoque: ");
+                        int Produtoremoveestoque = input.nextInt();
+                        estoque.removerProduto(encontrarProdutoPorNome(Produtoremovenome), Produtoremoveestoque);
+                        System.out.println(encontrarProdutoPorNome(Produtoremovenome) +  " Removido");
+                        
+                        menuadm();
 
                     case 3:
                         // Exibir Estoque
-                        System.out.println("ExibirEstoque:");
-
+                        estoque.exibirEstoque();
+                        menuadm();
+                        
                     case 4:
                         //Pesquisar Produto
-                        System.out.println("Pesquisar um produto:");
+                        System.out.println("Insira o nome do Produto: ");
+                        String Produtopesquisarnome = input2.nextLine();
+                        estoque.verificarEstoque(encontrarProdutoPorNome(Produtopesquisarnome));
+                        menuadm();
+
 
                     case 5:
                         System.out.println("-----Obrigado pela preferência! Volte Sempre!-----");
