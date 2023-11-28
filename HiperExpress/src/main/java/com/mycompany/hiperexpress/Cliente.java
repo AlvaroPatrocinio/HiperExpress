@@ -6,7 +6,7 @@ public class Cliente {
     private String telefone;
     private String endereco;
     private String cpf;
-    
+    private int ID;
     
     private static int numClientes = 0;
     protected static int numClientes2 = 0;
@@ -20,11 +20,13 @@ public class Cliente {
     }
     
    
-    public Cliente(String nome, String telefone, String endereco, String cpf) {
+    public Cliente(String nome, String telefone, String endereco, String cpf, int ID) {
         this.nome = nome;
         this.telefone = telefone;
         this.endereco = endereco;
         this.cpf = cpf;
+        this.ID = numClientes;
+        numClientes++;
     }
     
    

@@ -1,4 +1,5 @@
 package com.mycompany.hiperexpress;
+import com.mycompany.hiperexpress.implement.json.ProdutosJson;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -87,7 +88,10 @@ public class Sistema {
                 int Produtoestoque = input.nextInt();
                 estoque.adicionarProduto(produto1, Produtoestoque);
                 System.out.println("------------Produto Adicionado!------------");
+                // Chamando o método para escrever os produtos no arquivo JSON
+                ProdutosJson.escreverProdutosParaJson(produtos, "Dados-Produto-HiperExpress.json");
                 menuadm();
+                break;
                            
             case 2:
                 estoque.exibirEstoque();
