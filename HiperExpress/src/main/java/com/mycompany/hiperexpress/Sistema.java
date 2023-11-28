@@ -44,6 +44,7 @@ public class Sistema {
         // Inicialização da lista de produtos
         produtos = new ArrayList<>();
     }
+    Venda venda = new Venda();
 
     private Produto encontrarProdutoPorNome(String nome) {
         for (Produto produto : produtos) {
@@ -90,7 +91,7 @@ public class Sistema {
                 System.out.println("/    Opção 2 - Remover Produto    /");
                 System.out.println("/    Opção 3 - Exibir Estoque     /");
                 System.out.println("/    Opção 4 - Pesquisar Produto     /");
-                System.out.println("/    Opção 5 - Sair     /");
+                System.out.println("/    Opção 5 - Voltar ao Menu Principal     /");
 
                 int estoquec = input.nextInt();
                 switch (estoquec) {
@@ -146,8 +147,7 @@ public class Sistema {
 
                     case 5:
                         exibirInicio();
-                        System.out.println("-----Obrigado pela preferência! Volte Sempre!-----");
-                        System.exit(0);
+                        menuadm();
 
                 }
 
@@ -157,15 +157,15 @@ public class Sistema {
             case 2:
                 exibirInicio();
                 System.out.println("/    Opção 1 - Realizar Venda     /");
-                System.out.println("/    Opção 2 - Cancelar Venda    /");
+                System.out.println("/    Opção 2 - Cancelar Ultima Venda    /");
                 System.out.println("/    Opção 3 - Emitir RV     /");
                 System.out.println("/    Opção 4 - Sair     /");
+                System.out.println("/    Opção 5 - Voltar ao Menu Principal     /");
 
                 int vendac = input.nextInt();
                 switch (vendac) {
 
                     case 1:
-                        Venda venda = new Venda();
                         System.out.println("Produtos disponíveis no estoque:");
                         for (Produto produto : produtos) {
                             System.out.println(produto);
@@ -206,6 +206,8 @@ public class Sistema {
 
                     case 2:
                         // Cancelar uma Venda
+                        exibirInicio();
+                        venda.cancelarVenda(estoque);
                         System.out.println("Cancelar uma venda");
 
                     case 3:
@@ -215,6 +217,10 @@ public class Sistema {
                     case 4:
                         System.out.println("-----Obrigado pela preferência! Volte Sempre!-----");
                         System.exit(0);
+                    case 5:
+                        exibirInicio();
+                        menuadm();
+                        
                 }
 
             /* Gerar Relatorios Mensais e Diarios
@@ -225,7 +231,7 @@ public class Sistema {
                 exibirInicio();
                 System.out.println("/    Opção 1 - Rendimento Diario     /");
                 System.out.println("/    Opção 2 - Rendimento Mensal    /");
-                System.out.println("/    Opção 3 - Sair     /");
+                System.out.println("/    Opção 3 - Voltar ao Menu Principal     /");
 
                 int relatorioc = input.nextInt();
                 switch (relatorioc) {
@@ -237,8 +243,8 @@ public class Sistema {
                         // Rendimento Mensal
                         System.out.println("Relatorio de Rendimento Mensal");
                     case 3:
-                        System.out.println("-----Obrigado pela preferência! Volte Sempre!-----");
-                        System.exit(0);
+                        exibirInicio();
+                        menuadm();
                 }
 
             /* Cadastrar Funcionario, Cliente, etc

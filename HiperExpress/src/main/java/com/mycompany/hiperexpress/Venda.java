@@ -34,6 +34,8 @@ public class Venda {
             System.out.println("Estoque insuficiente para adicionar o item à venda.");
         }
     }
+    
+    
 
     public void finalizarVenda() {
         System.out.println("---- Resumo da Venda ----");
@@ -43,6 +45,20 @@ public class Venda {
         System.out.println("Total da venda: " + calcularTotalVenda());
         System.out.println("Venda finalizada em: " + dataVenda);
     }
+    
+     public void cancelarVenda(Estoque estoque) {
+        // Adiciona os produtos de volta ao estoque
+        for (ItemVenda itemVenda : itensVenda) {
+            Produto produto = itemVenda.getProduto();
+            int quantidade = itemVenda.getQuantidade();
+            estoque.adicionarProduto(produto, quantidade);
+        }
+        // Limpa a lista de itens da venda
+        itensVenda.clear();
+
+        System.out.println("Venda cancelada com sucesso.");
+    }
+        
 
     public double calcularTotalVenda() {
         double total = 0;
