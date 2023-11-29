@@ -1,8 +1,10 @@
 package com.mycompany.hiperexpress;
 
 public class Caixa {
-
+    
+    /** Número do caixa. */
     private int numero;
+    /** Tipo de caixa. */
     private String tipo;
 
     /**
