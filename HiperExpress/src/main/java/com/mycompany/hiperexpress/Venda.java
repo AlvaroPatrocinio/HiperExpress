@@ -77,7 +77,7 @@ public class Venda {
         return total;
     }
 
-    private static class ItemVenda {
+    public static class ItemVenda {
 
         private Produto produto;
         private int quantidade;
