@@ -1,6 +1,8 @@
 package com.mycompany.hiperexpress;
 
 import com.mycompany.hiperexpress.implement.json.ProdutosJson;
+import com.mycompany.hiperexpress.implement.json.CadastroJson;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -102,20 +104,20 @@ public class Sistema {
 
         System.out.println("Cliente não encontrado com o CPF fornecido.");
     }
-    
+
     public void editarCadastroCliente() {
-         Scanner edit1 = new Scanner(System.in);
-         Scanner edit2 = new Scanner(System.in);
-         System.out.println("Informe o CPF do cliente que deseja editar:");
-         String CPF = (edit1.nextLine());
-         boolean alt;
+        Scanner edit1 = new Scanner(System.in);
+        Scanner edit2 = new Scanner(System.in);
+        System.out.println("Informe o CPF do cliente que deseja editar:");
+        String CPF = (edit1.nextLine());
+        boolean alt;
 
-           try {
-            for(Cliente cliente : HiperExpress.getClienteCadastrado()){
+        try {
+            for (Cliente cliente : HiperExpress.getClienteCadastrado()) {
 
-                if(cliente.getCpf().equals(CPF)){
+                if (cliente.getCpf().equals(CPF)) {
                     boolean verdade = true;
-                    while(verdade){
+                    while (verdade) {
                         System.out.println("Qual dado deseja modificar?: ");
                         System.out.println("/    Opção 1 - Nome     /");
                         System.out.println("/    Opção 2 - Telefone     /");
@@ -123,16 +125,16 @@ public class Sistema {
                         System.out.println("/    Opção 4 - CPF     /");
                         int alterar;
                         alterar = edit1.nextInt();
-                        switch(alterar){
+                        switch (alterar) {
 
-                            case 1: 
+                            case 1:
                                 String Newnome;
                                 System.out.println("Digite o novo nome: ");
                                 Newnome = edit2.nextLine();
                                 cliente.setNome(Newnome);
                                 System.out.println("Nome alterado com sucesso!\n");
                                 //JSON
-                               menuadm();
+                                menuadm();
 
                             case 2:
                                 String NewTel;
@@ -157,50 +159,50 @@ public class Sistema {
                                 cliente.setCpf(NewCPF);
                                 System.out.println("CPF alterado com sucesso!\n");
                                 //JSON
-                               menuadm();
+                                menuadm();
                         }
-                    } 
+                    }
 
-                    } else {
-                              System.out.println("Opção Invalida!");
-                              menuadm();
-                              } 
+                } else {
+                    System.out.println("Opção Invalida!");
+                    menuadm();
+                }
 
-
-                }} catch(RuntimeException e) {
+            }
+        } catch (RuntimeException e) {
             e.getMessage();
         }
     }
-    
+
     public void editarCadastroADM() {
-         Scanner edit1 = new Scanner(System.in);
-         Scanner edit2 = new Scanner(System.in);
-         System.out.println("Informe o CPF do administrador que deseja editar:");
-         String CPF = (edit1.nextLine());
-         boolean alt;
+        Scanner edit1 = new Scanner(System.in);
+        Scanner edit2 = new Scanner(System.in);
+        System.out.println("Informe o CPF do administrador que deseja editar:");
+        String CPF = (edit1.nextLine());
+        boolean alt;
 
-           try {
-            for(Administrador administrador : HiperExpress.getAdmCadastrado()){
+        try {
+            for (Administrador administrador : HiperExpress.getAdmCadastrado()) {
 
-                if(administrador.getCPF().equals(CPF)){
+                if (administrador.getCPF().equals(CPF)) {
                     boolean verdade = true;
-                    while(verdade){
+                    while (verdade) {
                         System.out.println("Qual dado deseja modificar?: ");
                         System.out.println("/    Opção 1 - Nome     /");
                         System.out.println("/    Opção 2 - Senha     /");
                         System.out.println("/    Opção 3 - CPF     /");
                         int alterar;
                         alterar = edit1.nextInt();
-                        switch(alterar){
+                        switch (alterar) {
 
-                            case 1: 
+                            case 1:
                                 String Newnome;
                                 System.out.println("Digite o novo nome: ");
                                 Newnome = edit2.nextLine();
                                 administrador.setNome(Newnome);
                                 System.out.println("Nome alterado com sucesso!\n");
                                 //JSON
-                               menuadm();
+                                menuadm();
 
                             case 2:
                                 String NewPass;
@@ -217,50 +219,50 @@ public class Sistema {
                                 administrador.setSenha(NewCPF);
                                 System.out.println("CPF alterado com sucesso!\n");
                                 //JSON
-                               menuadm();
+                                menuadm();
                         }
-                    } 
+                    }
 
-                    } else {
-                              System.out.println("Opção Invalida!");
-                              System.exit(0);
-                              } 
+                } else {
+                    System.out.println("Opção Invalida!");
+                    System.exit(0);
+                }
 
-
-                }} catch(RuntimeException e) {
+            }
+        } catch (RuntimeException e) {
             e.getMessage();
         }
     }
-    
+
     public void editarCadastroFUN() {
-         Scanner edit1 = new Scanner(System.in);
-         Scanner edit2 = new Scanner(System.in);
-         System.out.println("Informe o CPF do funcionário que deseja editar:");
-         String CPF = (edit1.nextLine());
-         boolean alt;
+        Scanner edit1 = new Scanner(System.in);
+        Scanner edit2 = new Scanner(System.in);
+        System.out.println("Informe o CPF do funcionário que deseja editar:");
+        String CPF = (edit1.nextLine());
+        boolean alt;
 
-           try {
-            for(Funcionario funcionario : HiperExpress.getFuncionarioCadastrado()){
+        try {
+            for (Funcionario funcionario : HiperExpress.getFuncionarioCadastrado()) {
 
-                if(funcionario.getCPF().equals(CPF)){
+                if (funcionario.getCPF().equals(CPF)) {
                     boolean verdade = true;
-                    while(verdade){
+                    while (verdade) {
                         System.out.println("Qual dado deseja modificar?: ");
                         System.out.println("/    Opção 1 - Nome     /");
                         System.out.println("/    Opção 2 - Senha     /");
                         System.out.println("/    Opção 3 - CPF     /");
                         int alterar;
                         alterar = edit1.nextInt();
-                        switch(alterar){
+                        switch (alterar) {
 
-                            case 1: 
+                            case 1:
                                 String Newnome;
                                 System.out.println("Digite o novo nome: ");
                                 Newnome = edit2.nextLine();
                                 funcionario.setNome(Newnome);
                                 System.out.println("Nome alterado com sucesso!\n");
                                 //JSON
-                               menuadm();
+                                menuadm();
 
                             case 2:
                                 String NewPass;
@@ -277,22 +279,21 @@ public class Sistema {
                                 funcionario.setCPF(CPF);
                                 System.out.println("CPF alterado com sucesso!\n");
                                 //JSON
-                               menuadm();
+                                menuadm();
                         }
-                    } 
+                    }
 
-                    } else {
-                              System.out.println("Opção Invalida!");
-                              System.exit(0);
-                              } 
+                } else {
+                    System.out.println("Opção Invalida!");
+                    System.exit(0);
+                }
 
-
-                }} catch(RuntimeException e) {
+            }
+        } catch (RuntimeException e) {
             e.getMessage();
         }
     }
 
-    
     private static void exibirInicio() {
         System.out.println();
         System.out.println("----------------------------------------------");
@@ -348,12 +349,12 @@ public class Sistema {
 
                             Produto produto1 = new Produto(Produtonome, Produtopreco, ProdutoCategoria, ProdutoQuantidade);
                             produtos.add(produto1);
-                            
+
                             System.out.println("------------Produto Adicionado!------------");
 
                             // Chamando o método para escrever os produtos no arquivo JSON
                             ProdutosJson.escreverProdutosParaJson(produtos, "Dados-Produto-HiperExpress.json");
-                            
+
                             // Quebra de linha pendente
                             input2.nextLine();
 
@@ -367,7 +368,6 @@ public class Sistema {
                         exibirInicio();
                         menuadm();
                         break;
-                        
 
                     case 2:
                         // Remover produto do estoque
@@ -379,14 +379,12 @@ public class Sistema {
                         // Chamando o método para remover o produto no arquivo JSON
                         ProdutosJson.removerProdutoDoJson(Produtoremovenome, Produtoremoveestoque, "Dados-Produto-HiperExpress.json");
 
-
                     case 3:
                         // Exibir Estoque
                         exibirInicio();
                         ProdutosJson.exibirEstoqueDoJson("Dados-Produto-HiperExpress.json");
                         menuadm();
                         break;
-
 
                     case 4:
                         // Pesquisar produto por nome
@@ -402,7 +400,6 @@ public class Sistema {
 
                         menuadm();
                         break;
-
 
                     case 5:
                         exibirInicio();
@@ -429,12 +426,12 @@ public class Sistema {
                         for (Produto produto : produtos) {
                             System.out.println(produto);
                         }
-                        
+
                         System.out.println("Digite o nome do produto para adicionar ao carrinho (ou 'fim' para finalizar): ");
                         String nomeProduto;
-                        
+
                         while (!(nomeProduto = input2.nextLine()).equalsIgnoreCase("fim")) {
-                        Produto produtoSelecionado = encontrarProdutoPorNome(nomeProduto);
+                            Produto produtoSelecionado = encontrarProdutoPorNome(nomeProduto);
                             if (produtoSelecionado != null) {
                                 System.out.println("Digite a quantidade desejada: ");
                                 int quantidade = input.nextInt();
@@ -523,7 +520,6 @@ public class Sistema {
 
                 int cadastroc = input.nextInt();
                 switch (cadastroc) {
-
                     case 1:
                         boolean CPFExistente = false;
                         Scanner scanAdm = new Scanner(System.in);
@@ -535,6 +531,10 @@ public class Sistema {
                         System.out.println("CPF: ");
                         String cpfADM = scanAdm.nextLine();
                         Administrador novoAdministrador = new Administrador(NomeADM, SenhaADM, cpfADM);
+
+                        // Chama o método para cadastrar o administrador
+                        CadastroJson.cadastrarNovoAdministrador(NomeADM, SenhaADM, cpfADM);
+
                         for (Administrador administrador : HiperExpress.getAdmCadastrado()) {
                             if (administrador.getCPF().equals(novoAdministrador.getCPF())) {
                                 CPFExistente = true;
@@ -545,33 +545,40 @@ public class Sistema {
                             System.out.println("Esse cpf já é Administrador do Sistema. Favor verificar.");
                             System.out.println("\"/    Opção 1 - Voltar ao menu Inicial     /\"");
                             System.out.println("\"/    Opção 2 - Sair     /\"");
-                            int fim2 = input2.nextInt();
+                            int fim2 = input.nextInt();
                             switch (fim2) {
                                 case 1:
                                     menuadm();
+                                    break;
                                 case 2:
                                     System.out.println("-----Obrigado pela preferência! Volte Sempre!-----");
                                     System.exit(0);
+                                    break;
                                 default:
-                                    System.out.println("Opção invalida! ");
+                                    System.out.println("Opção inválida! ");
+                                    break;
                             }
                         } else {
                             HiperExpress.getAdmCadastrado().add(novoAdministrador);
                             System.out.println("Administrador cadastrado com Sucesso!.");
                             System.out.println("\"/    Opção 1 - Voltar ao menu Inicial     /\"");
                             System.out.println("\"/    Opção 2 - Sair     /\"");
-                            int fim2 = input2.nextInt();
+                            int fim2 = input.nextInt();
                             switch (fim2) {
                                 case 1:
                                     menuadm();
+                                    break;
                                 case 2:
                                     System.out.println("-----Obrigado pela preferência! Volte Sempre!-----");
                                     System.exit(0);
+                                    break;
                                 default:
-                                    System.out.println("Opção invalida! ");
+                                    System.out.println("Opção inválida! ");
+                                    break;
                             }
                         }
-                        
+                        break;
+
                     case 2:
                         boolean CPFFExistente = false;
                         Scanner scanFun = new Scanner(System.in);
@@ -582,7 +589,13 @@ public class Sistema {
                         String SenhaFUN = scanFun.nextLine();
                         System.out.println("CPF: ");
                         String CpfFUN = scanFun.nextLine();
-                        Funcionario novoFuncionario = new Funcionario(NomeFUN, SenhaFUN, CpfFUN);
+                        System.out.println("Cargo: ");
+                        String CargoFUN = scanFun.nextLine();
+                        Funcionario novoFuncionario = new Funcionario(NomeFUN, SenhaFUN, CpfFUN, CargoFUN);
+
+                        // Chama o método para cadastrar o Funcionario
+                        CadastroJson.cadastrarNovoFuncionario(NomeFUN, SenhaFUN, CpfFUN, CargoFUN);
+
                         for (Funcionario funcionario : HiperExpress.getFuncionarioCadastrado()) {
                             if (funcionario.getCPF().equals(novoFuncionario.getCPF())) {
                                 CPFFExistente = true;
@@ -619,7 +632,6 @@ public class Sistema {
                                     System.out.println("Opção invalida!");
                             }
                         }
-                        
 
                     case 3:
                         boolean cpfExiste = false;
@@ -634,6 +646,10 @@ public class Sistema {
                         novoCliente.setEndereco(scanCliente.nextLine());
                         System.out.printf("CPF: ");
                         novoCliente.setCpf(scanCliente.nextLine());
+
+                        // Chama o método para cadastrar o Cliente
+                        CadastroJson.cadastrarNovoCliente(novoCliente);
+
                         for (Cliente cliente : HiperExpress.ClienteCadastrado()) {
                             if (cliente.getCpf().equals(novoCliente.getCpf())) {
                                 cpfExiste = true;
@@ -682,19 +698,21 @@ public class Sistema {
                             case 1:
                                 System.out.println("Digite o CPF do Cliente: ");
                                 String cpfExclusao1 = input3.nextLine();
-                                excluirCLI(cpfExclusao1);
+                                CadastroJson.excluirCliente(cpfExclusao1);
                                 menuadm();
 
                             case 2:
                                 System.out.println("Digite o CPF do Funcionario: ");
                                 String cpfExclusao2 = input3.nextLine();
-                                excluirFUN(cpfExclusao2);
+                                CadastroJson.excluirFuncionario(cpfExclusao2);
+                                ;
                                 menuadm();
 
                             case 3:
                                 System.out.println("Digite o CPF do Administrador: ");
                                 String cpfExclusao3 = input3.nextLine();
-                                excluirADM(cpfExclusao3);
+                                CadastroJson.excluirAdministrador(cpfExclusao3);
+                                ;
                                 menuadm();
                             default:
                                 System.out.println("Opção Invalida!");
@@ -703,52 +721,56 @@ public class Sistema {
 
                     case 5:
                         System.out.println("Digite a opção desejada: ");
-                        System.out.println("\"/    Opção 1 - Cadastro de Clientes     /\"");
+                        System.out.println("\"/    Opção 1 - Cadastro de Administrador     /\"");
                         System.out.println("\"/    Opção 2 - Cadastro de Funcionarios   /\"");
-                        System.out.println("\"/    Opção 3 - Cadastro de Administrador   /\"");
+                        System.out.println("\"/    Opção 3 - Cadastro de Cliente   /\"");
                         int fim5 = input.nextInt();
                         switch (fim5) {
                             case 1:
-                                System.out.println("----------CLIENTES CADASTRADOS----------");
-                                System.out.println("Quantidade total: " + HiperExpress.ClienteCadastrado().size() + " clientes cadastrados no sistema.");
-                                System.out.println(HiperExpress.getClienteCadastrado());
+                                System.out.println("----------ADMINISTRADORES CADASTRADOS----------");
+                                CadastroJson.listarAdministradores();
                                 menuadm();
+                                break;
 
                             case 2:
                                 System.out.println("----------FUNCIONARIOS CADASTRADOS----------");
-                                System.out.println("Quantidade total: " + HiperExpress.getFuncionarioCadastrado().size() + " clientes cadastrados no sistema.");
-                                System.out.println(HiperExpress.getFuncionarioCadastrado());
+                                CadastroJson.listarFuncionarios();
                                 menuadm();
+                                break;
 
                             case 3:
-                                System.out.println("----------ADMINISTRADORES CADASTRADOS----------");
-                                System.out.println("Quantidade total: " + HiperExpress.getAdmCadastrado().size() + " Administradores cadastrados no sistema.");
-                                System.out.println(HiperExpress.getAdmCadastrado());
+                                System.out.println("----------CLIENTES CADASTRADOS----------");
+                                CadastroJson.listarClientes();
                                 menuadm();
+                                break;
+                        }
 
-                        }             
-                        
                     case 6:
                         System.out.println("Digite a opção desejada: ");
                         System.out.println("\"/    Opção 1 - Editar dados de Clientes     /\"");
                         System.out.println("\"/    Opção 2 - Editar dados do Administrador     /\"");
                         System.out.println("\"/    Opção 3 - Editar dados do Funcionarios     /\"");
                         int Option = input.nextInt();
-                        switch(Option){
+                        switch (Option) {
                             case 1:
-                                editarCadastroCliente();
+                                CadastroJson.editarDadosCliente();
+                                menuadm();
+                                break;
                             case 2:
-                                editarCadastroADM();
+                                CadastroJson.editarDadosAdministrador();
+                                menuadm();
+                                break;
                             case 3:
-                                editarCadastroFUN();
+                                CadastroJson.editarDadosFuncionario();
+                                menuadm();
+                                break;
                         }
-                       
-                        
+
                     case 7:
                         System.out.println("-----Obrigado pela preferência! Volte Sempre!-----");
                         System.exit(0);
                 }
-                
+
             case 5:
                 System.out.println("-----Obrigado pela preferência! Volte Sempre!-----");
                 System.exit(0);

@@ -6,27 +6,16 @@ public class Cliente {
     private String telefone;
     private String endereco;
     private String cpf;
-    private int ID;
     
-    private static int numClientes = 0;
-    protected static int numClientes2 = 0;
+    public Cliente(){
+    
+    }
 
-    public  Cliente() {
-        numClientes++;
-    }
-    
-        public static int getNumClientes(){
-        return numClientes;
-    }
-    
-   
-    public Cliente(String nome, String telefone, String endereco, String cpf, int ID) {
+    public Cliente(String nome, String telefone, String endereco, String cpf) {
         this.nome = nome;
         this.telefone = telefone;
         this.endereco = endereco;
         this.cpf = cpf;
-        this.ID = numClientes;
-        numClientes++;
     }
     
     public void editarCadastro(String novoNome, String novoTelefone, String novoEnd, String novoCPF) {

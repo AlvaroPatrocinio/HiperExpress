@@ -4,16 +4,23 @@ public class Funcionario {
     
    private String nome;
    private String senha;
-   private int id;
    private String CPF;
-   
-   public Funcionario (String nome, String senha, String CPF){
-       this.nome = nome;
-       this.senha = senha;
-       this.CPF = CPF;
-   }
-   
-     
+   private String cargo;
+
+    public Funcionario(String nome, String senha, String CPF) {
+        this.nome = nome;
+        this.senha = senha;
+        this.CPF = CPF;
+    }
+
+    public Funcionario(String nome, String senha, String CPF, String cargo) {
+        this.nome = nome;
+        this.senha = senha;
+        this.CPF = CPF;
+        this.cargo = cargo;
+    }
+    
+
     public String getNome() {
         return nome;
     }
@@ -30,14 +37,6 @@ public class Funcionario {
         this.senha = senha;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getCPF() {
         return CPF;
     }
@@ -45,16 +44,18 @@ public class Funcionario {
     public void setCPF(String CPF) {
         this.CPF = CPF;
     }
-    
-    
-   
+
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
+
     @Override
     public String toString() {
-        return "\n------------------------------------------------------------------------"+""
-             + "\nNOME = " + this.getNome() + ""
-             + "\nSENHA = " + this.getSenha() + ""
-             + "\nID = " + this.getId() + ""
-             + "\nCPF = " + this.getCPF()+ "" + "\n" +
-              "------------------------------------------------------------------------";
+        return "Funcionario{" + "nome=" + nome + ", senha=" + senha + ", CPF=" + CPF + ", cargo=" + cargo + '}';
+    }
    
-}}
+}
