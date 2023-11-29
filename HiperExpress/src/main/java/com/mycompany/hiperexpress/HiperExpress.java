@@ -4,7 +4,6 @@ import Comparator.VendaComparator;
 import Comparator.ProdutoComparator;
 
 public class HiperExpress { 
-    
 
 //ArrayList e encapsulamento de Clientes.
 private static ArrayList<Cliente> clienteCadastrado = new ArrayList<>();

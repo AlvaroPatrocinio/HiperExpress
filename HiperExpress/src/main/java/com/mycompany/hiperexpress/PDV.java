@@ -38,11 +38,18 @@ public class PDV {
         fechamentoDiario.put(new Date(), (double) totalVendas);
      }
 
-    public void realizarFechamentoMensal() {
-        // precisa implementar
-        
-        System.out.println("Fechamento mensal: ");
-          
+    public void realizarFechamentoMensal(List<Venda> itensVenda) {
+         double totalVendas = 0;
+
+        for (Venda venda : vendas) {
+            Date dataVenda = venda.getDataVenda();
+            if (mesmaData(new Date(), dataVenda)) {
+                totalVendas += venda.calcularTotalVenda();
+            }
+        }
+
+        System.out.println("Fechamento mensal realizado.");
+        System.out.println("Total de vendas no mês: " + totalVendas);
     }
 
     public int getCaixa() {
