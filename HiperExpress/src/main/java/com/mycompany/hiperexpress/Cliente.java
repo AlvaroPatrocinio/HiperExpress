@@ -29,6 +29,13 @@ public class Cliente {
         numClientes++;
     }
     
+    public void editarCadastro(String novoNome, String novoTelefone, String novoEnd, String novoCPF) {
+    this.nome = novoNome;
+    this.telefone = novoTelefone;
+    this.endereco = novoEnd;
+    this.cpf = novoCPF;
+}
+    
    
     public String getNome() {
         return nome;

@@ -18,6 +18,7 @@ public static void setClienteCadastrado(ArrayList<Cliente> clienteCadastrado) {
 
 
 //ArrayList e encapsulamento de Funcionário.
+//Questão 2
 private static ArrayList<Funcionario> funcionarioCadastrado = new ArrayList<>();
 public static ArrayList<Funcionario> getFuncionarioCadastrado() {
         return funcionarioCadastrado;
@@ -28,6 +29,7 @@ public static void setFuncionarioCadastrado(ArrayList<Funcionario> funcionarioCa
 
 
 //ArrayList e encapsulamento de Administrador.
+//Questão 2
 private static ArrayList<Administrador> AdmCadastrado = new ArrayList<>();
 public static ArrayList<Administrador> getAdmCadastrado() {
         return AdmCadastrado;

@@ -7,14 +7,19 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Sistema {
-
+    //Scanners para leitura de informação
     private static Scanner input = new Scanner(System.in);
     private static Scanner input2 = new Scanner(System.in);
     private static Scanner input3 = new Scanner(System.in);
+    private static Scanner input4 = new Scanner(System.in);
+    
+    
     private static ArrayList<Produto> produtos;
-    private static ArrayList<Produto> carrinho;
+    
     private static List<Caixa> caixas;
+    
     private Estoque estoque = new Estoque();
+    
     private static Sistema instance;
 
     private Sistema() {
@@ -46,9 +51,11 @@ public class Sistema {
         // Inicialização da lista de produtos
         produtos = new ArrayList<>();
     }
+    
+    
     Venda venda = new Venda();
     
-
+    //Método para encontrar Produto por nome.
     private Produto encontrarProdutoPorNome(String nome) {
         for (Produto produto : produtos) {
             if (produto.getNome().equalsIgnoreCase(nome)) {
@@ -57,6 +64,7 @@ public class Sistema {
         }
         return null;
     }
+    
     
     public void excluirADM(String CPF) {
         Iterator<Administrador> iterator = HiperExpress.getAdmCadastrado().iterator();
@@ -72,6 +80,7 @@ public class Sistema {
 
         System.out.println("Administrador não encontrado com o CPF fornecido.");
     }
+    
     public void excluirFUN(String CPF) {
         Iterator<Funcionario> iterator = HiperExpress.getFuncionarioCadastrado().iterator();
 
@@ -86,6 +95,7 @@ public class Sistema {
 
         System.out.println("Funcionário não encontrado com o CPF fornecido.");
     }
+        //Questão 7
     public void excluirCLI(String CPF) {
         Iterator<Cliente> iterator = HiperExpress.getClienteCadastrado().iterator();
 
@@ -100,6 +110,81 @@ public class Sistema {
 
         System.out.println("Cliente não encontrado com o CPF fornecido.");
     }
+    
+    public void editarCadastroCliente() {
+         Scanner edit1 = new Scanner(System.in);
+         Scanner edit2 = new Scanner(System.in);
+         System.out.println("Informe o CPF do cliente que deseja editar:");
+         String CPF = (edit1.nextLine());
+         boolean alt;
+        
+           try {
+            for(Cliente cliente : HiperExpress.getClienteCadastrado()){
+                
+                if(cliente.getCpf().equals(CPF)){
+                    boolean verdade = true;
+                    while(verdade){
+                        System.out.println("Qual dado deseja modificar?: ");
+                        System.out.println("/    Opção 1 - Nome     /");
+                        System.out.println("/    Opção 2 - Telefone     /");
+                        System.out.println("/    Opção 3 - Endereço     /");
+                        System.out.println("/    Opção 4 - CPF     /");
+                        int alterar;
+                        alterar = edit1.nextInt();
+                        switch(alterar){
+                           
+                            case 1: 
+                                String Newnome;
+                                System.out.println("Digite o novo nome: ");
+                                Newnome = edit2.nextLine();
+                                cliente.setNome(Newnome);
+                                System.out.println("Nome alterado com sucesso!\n");
+                                //JSON
+                               menuadm();
+                                        
+                            case 2:
+                                String NewTel;
+                                System.out.println("Digite o novo telefone: ");
+                                NewTel = edit2.nextLine();
+                                cliente.setTelefone(NewTel);
+                                System.out.println("Telefone alterado com sucesso!\n");
+                                //JSON
+                                menuadm();
+                            case 3:
+                                String NewEnd;
+                                System.out.println("Digite o novo endereço: ");
+                                NewEnd = edit2.nextLine();
+                                cliente.setEndereco(NewEnd);
+                                System.out.println("Endereço alterado com sucesso!\n");
+                                //JSON
+                                menuadm();
+                            case 4:
+                                String NewCPF;
+                                System.out.println("Digite o novo CPF: ");
+                                NewCPF = edit2.nextLine();
+                                cliente.setCpf(NewCPF);
+                                System.out.println("CPF alterado com sucesso!\n");
+                                //JSON
+                               menuadm();
+                        }
+                    } 
+
+                    } else {
+                              System.out.println("Opção Invalida!");
+                              System.exit(0);
+                              } 
+                
+         
+                }} catch(RuntimeException e) {
+            e.getMessage();
+        }
+    }
+  
+
+ 
+ 
+ 
+    
     
     
 
@@ -213,7 +298,8 @@ public class Sistema {
 
                 int vendac = input.nextInt();
                 switch (vendac) {
-
+                   
+                    //Questão 8
                     case 1:
                         System.out.println("Produtos disponíveis no estoque:");
                         for (Produto produto : produtos) {
@@ -257,9 +343,10 @@ public class Sistema {
                         exibirInicio();
                         venda.cancelarVenda(estoque);
                         menuadm();
-                        
+                   
+                    //Questão 8   
                     case 3:
-                        exibirInicio();
+                                               exibirInicio();
                         venda.recuperarRegistroVenda();
                         menuadm();
 
@@ -307,7 +394,8 @@ public class Sistema {
                 System.out.println("/    Opção 3 - Cadastrar Cliente    /");
                 System.out.println("/    Opção 4 - Excluir Cadastro    /");
                 System.out.println("/    Opção 5 - Listar Cadastros    /");
-                System.out.println("/    Opção 6 - Sair     /");
+                System.out.println("/    Opção 6 - Editar Cadastro    /");
+                System.out.println("/    Opção 7 - Sair     /");
 
                 int cadastroc = input.nextInt();
 switch (cadastroc) {
@@ -411,7 +499,7 @@ if (CPFExistente) {
                         }
 
                     case 4:
-                        System.out.println("DDigite a opção desejada: ");
+                        System.out.println("Digite a opção desejada: ");
                         System.out.println("\"/    Opção 1 - Exclusão de Clientes     /\"");
                         System.out.println("\"/    Opção 2 - Exclusão de Funcionario     /\"");
                         System.out.println("\"/    Opção 3 - Exclusão de Administrador     /\"");
@@ -442,7 +530,7 @@ if (CPFExistente) {
      
                         
                        
-
+                    //Questão 8
                     case 5:
                         System.out.println("Digite a opção desejada: ");
                         System.out.println("\"/    Opção 1 - Cadastro de Clientes     /\"");
@@ -471,9 +559,9 @@ if (CPFExistente) {
                     }
 
                     case 6:
-                        System.out.println("-----Obrigado pela preferência! Volte Sempre!-----");
-                        System.exit(0);
-                      
+                        //Editar Cadastro
+                        editarCadastroCliente();
+
                         
                     case 2:
                         boolean CPFFExistente = false;
@@ -522,11 +610,10 @@ if (CPFFExistente) {
                                 default:
                                     System.out.println("Opção invalida!");
                             }}
-}                
-            case 5:
+                
+            case 7:
             System.out.println("-----Obrigado pela preferência! Volte Sempre!-----");
-            System.exit(0);
+            System.exit(0);}
         }
-
     }
 }
