@@ -20,7 +20,7 @@ public class Cliente {
         return numClientes;
     }
 
-    public Cliente(String nome, String telefone, String endereco, String cpf, int id) {
+    public Cliente(String nome, String telefone, String endereco, String cpf) {
         this.nome = nome;
         this.telefone = telefone;
         this.endereco = endereco;
@@ -34,6 +34,10 @@ public class Cliente {
         this.telefone = novoTelefone;
         this.endereco = novoEnd;
         this.cpf = novoCPF;
+    }
+    
+      public static int getNumClientes2() {
+        return numClientes2;
     }
 
     public String getNome() {
@@ -67,6 +71,15 @@ public class Cliente {
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
 
     @Override
     public String toString() {
