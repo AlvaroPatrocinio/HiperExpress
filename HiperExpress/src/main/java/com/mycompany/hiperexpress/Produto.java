@@ -6,8 +6,9 @@ public class Produto {
     private double valorDoProduto;
     private int id;
     private String categoria;  
-    private static int count = 0;
     private int quantidade;
+    private static int count = 0;
+    
 
 
    
