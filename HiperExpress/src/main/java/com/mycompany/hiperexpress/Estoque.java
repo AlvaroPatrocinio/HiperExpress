@@ -23,6 +23,16 @@ public class Estoque {
         System.out.println(quantidade + " unidades de " + produto.getNome() + " adicionadas ao estoque.");
     }
 
+     public Produto encontrarProdutoPorNome(String nomeProduto) {
+        for (Produto produto : estoqueProdutos.keySet()) {
+            if (produto.getNome().equalsIgnoreCase(nomeProduto)) {
+                return produto;
+            }
+        }
+        return null; // Retorna null se o produto não for encontrado
+    }
+
+
     public void removerProduto(Produto produto, int quantidade) {
         if (quantidade <= 0) {
             System.out.println("Quantidade inválida. Insira uma quantidade positiva.");

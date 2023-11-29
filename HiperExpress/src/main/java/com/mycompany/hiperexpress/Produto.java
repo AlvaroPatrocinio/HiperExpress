@@ -7,13 +7,15 @@ public class Produto {
     private int id;
     private String categoria;  
     private static int count = 0;
+    private int quantidade;
 
 
    
-    public Produto(String nome, double valorDoProduto, String categoria) {
+    public Produto(String nome, double valorDoProduto, String categoria, int quantidade) {
         this.nome = nome;
         this.valorDoProduto = valorDoProduto;
         this.categoria = categoria; 
+        this.quantidade = quantidade;
         this.id = count; 
         count++; 
     }
@@ -56,17 +58,18 @@ public class Produto {
         this.id = id;
     }
 
-   
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+
     @Override
     public String toString() {
-    return String.format("""
-                         Produto {
-                           Nome: '%s',
-                           Valor: %.2f,
-                           Categoria: '%s',
-                           ID: %d
-                         }""",
-        nome, valorDoProduto, categoria, id
-    );
-}
+        return "Produto{" + "nome=" + nome + ", valorDoProduto=" + valorDoProduto + ", id=" + id + ", categoria=" + categoria + ", quantidade=" + quantidade + '}';
+    }
+
+   
     }

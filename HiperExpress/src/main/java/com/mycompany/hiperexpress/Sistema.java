@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
+import org.json.simple.JSONObject;
 
 public class Sistema {
 
@@ -47,7 +48,6 @@ public class Sistema {
         produtos = new ArrayList<>();
     }
     Venda venda = new Venda();
-    
 
     private Produto encontrarProdutoPorNome(String nome) {
         for (Produto produto : produtos) {
@@ -57,7 +57,7 @@ public class Sistema {
         }
         return null;
     }
-    
+
     public void excluirADM(String CPF) {
         Iterator<Administrador> iterator = HiperExpress.getAdmCadastrado().iterator();
 
@@ -72,6 +72,7 @@ public class Sistema {
 
         System.out.println("Administrador não encontrado com o CPF fornecido.");
     }
+
     public void excluirFUN(String CPF) {
         Iterator<Funcionario> iterator = HiperExpress.getFuncionarioCadastrado().iterator();
 
@@ -86,6 +87,7 @@ public class Sistema {
 
         System.out.println("Funcionário não encontrado com o CPF fornecido.");
     }
+
     public void excluirCLI(String CPF) {
         Iterator<Cliente> iterator = HiperExpress.getClienteCadastrado().iterator();
 
@@ -100,9 +102,6 @@ public class Sistema {
 
         System.out.println("Cliente não encontrado com o CPF fornecido.");
     }
-    
-    
-
 
     private static void exibirInicio() {
         System.out.println();
@@ -146,52 +145,73 @@ public class Sistema {
                 switch (estoquec) {
 
                     case 1:
-                        System.out.println("Digite o nome do Produto: ");
-                        String Produtonome = input2.nextLine();
-                        System.out.println("Digite o preço do Produto: ");
-                        Double Produtopreco = input.nextDouble();
-                        System.out.println("Digite a Categoria Desejada: ");
-                        System.out.println("-HortiFruti\n-Alimentos \n-Congelados \n-Bebidas");
-                        String ProdutoCategoria = input2.nextLine();
+                        while (true) {
+                            System.out.println("Digite o nome do Produto: ");
+                            String Produtonome = input2.nextLine();
+                            System.out.println("Digite o preço do Produto: ");
+                            Double Produtopreco = input.nextDouble();
+                            System.out.println("Digite a Categoria Desejada: ");
+                            System.out.println("-HortiFruti\n-Alimentos \n-Congelados \n-Bebidas");
+                            String ProdutoCategoria = input2.nextLine();
+                            System.out.println("Digite a quantidade a dar entrada no estoque: ");
+                            int ProdutoQuantidade = input2.nextInt();
 
-                        Produto produto1 = new Produto(Produtonome, Produtopreco, ProdutoCategoria);
-                        produtos.add(produto1);
+                            Produto produto1 = new Produto(Produtonome, Produtopreco, ProdutoCategoria, ProdutoQuantidade);
+                            produtos.add(produto1);
+                            
+                            System.out.println("------------Produto Adicionado!------------");
 
-                        System.out.println("Digite a quantidade a dar entrada no estoque: ");
-                        int Produtoestoque = input.nextInt();
-                        estoque.adicionarProduto(produto1, Produtoestoque);
-                        System.out.println("------------Produto Adicionado!------------");
+                            // Chamando o método para escrever os produtos no arquivo JSON
+                            ProdutosJson.escreverProdutosParaJson(produtos, "Dados-Produto-HiperExpress.json");
+                            
+                            // Quebra de linha pendente
+                            input2.nextLine();
 
-                        // Chamando o método para escrever os produtos no arquivo JSON
-                        ProdutosJson.escreverProdutosParaJson(produtos, "Dados-Produto-HiperExpress.json");
+                            // Oferecer a opção de continuar adicionando produtos ou voltar ao menu inicial
+                            System.out.println("Deseja adicionar outro produto? (S para Sim, qualquer outra tecla para voltar ao menu)");
+                            String continuar = input2.nextLine().toUpperCase();
+                            if (!continuar.equals("S")) {
+                                break;
+                            }
+                        }
                         exibirInicio();
                         menuadm();
                         break;
+                        
 
                     case 2:
-                        // remover produto
+                        // Remover produto do estoque
                         System.out.println("Digite o nome do Produto: ");
                         String Produtoremovenome = input2.nextLine();
                         System.out.println("Digite a quantidade a dar baixa no estoque: ");
                         int Produtoremoveestoque = input.nextInt();
-                        estoque.removerProduto(encontrarProdutoPorNome(Produtoremovenome), Produtoremoveestoque);
-                        System.out.println(encontrarProdutoPorNome(Produtoremovenome) +  " Removido");
-                        menuadm();
+
+                        // Chamando o método para remover o produto no arquivo JSON
+                        ProdutosJson.removerProdutoDoJson(Produtoremovenome, Produtoremoveestoque, "Dados-Produto-HiperExpress.json");
+
 
                     case 3:
                         // Exibir Estoque
                         exibirInicio();
-                        estoque.exibirEstoque();
-                        exibirInicio();
+                        ProdutosJson.exibirEstoqueDoJson("Dados-Produto-HiperExpress.json");
                         menuadm();
-                        
+                        break;
+
+
                     case 4:
-                        //Pesquisar Produto
-                        System.out.println("Insira o nome do Produto: ");
-                        String Produtopesquisarnome = input2.nextLine();
-                        estoque.verificarEstoque(encontrarProdutoPorNome(Produtopesquisarnome));
-                        exibirInicio();
+                        // Pesquisar produto por nome
+                        System.out.println("Digite o nome do produto a ser pesquisado: ");
+                        String nomeProdutoPesquisa = input2.nextLine();
+                        JSONObject resultadoPesquisa = ProdutosJson.pesquisarProdutoPorNome(nomeProdutoPesquisa, "Dados-Produto-HiperExpress.json");
+
+                        if (resultadoPesquisa != null) {
+                            System.out.println(resultadoPesquisa.toJSONString());
+                        } else {
+                            System.out.println("Produto não encontrado.");
+                        }
+
                         menuadm();
+                        break;
 
 
                     case 5:
@@ -257,7 +277,7 @@ public class Sistema {
                         exibirInicio();
                         venda.cancelarVenda(estoque);
                         menuadm();
-                        
+
                     case 3:
                         exibirInicio();
                         venda.recuperarRegistroVenda();
@@ -269,7 +289,7 @@ public class Sistema {
                     case 5:
                         exibirInicio();
                         menuadm();
-                        
+
                 }
 
             /* Gerar Relatorios Mensais e Diarios
@@ -310,7 +330,7 @@ public class Sistema {
                 System.out.println("/    Opção 6 - Sair     /");
 
                 int cadastroc = input.nextInt();
-switch (cadastroc) {
+                switch (cadastroc) {
 
                     case 1:
                         boolean CPFExistente = false;
@@ -324,16 +344,16 @@ switch (cadastroc) {
                         String cpfADM = scanAdm.nextLine();
                         Administrador novoAdministrador = new Administrador(NomeADM, SenhaADM, cpfADM);
                         for (Administrador administrador : HiperExpress.getAdmCadastrado()) {
-                            if (administrador.getCPF().equals(novoAdministrador.getCPF())){
+                            if (administrador.getCPF().equals(novoAdministrador.getCPF())) {
                                 CPFExistente = true;
                                 break;
                             }
                         }
-if (CPFExistente) {
+                        if (CPFExistente) {
                             System.out.println("Esse cpf já é Administrador do Sistema. Favor verificar.");
                             System.out.println("\"/    Opção 1 - Voltar ao menu Inicial     /\"");
-                            System.out.println("\"/    Opção 2 - Sair     /\""); 
-                        int fim2 = input2.nextInt();
+                            System.out.println("\"/    Opção 2 - Sair     /\"");
+                            int fim2 = input2.nextInt();
                             switch (fim2) {
                                 case 1:
                                     menuadm();
@@ -343,13 +363,12 @@ if (CPFExistente) {
                                 default:
                                     System.out.println("Opção invalida! ");
                             }
-}
-                            else {
-                        HiperExpress.getAdmCadastrado().add(novoAdministrador);
-                        System.out.println("Administrador cadastrado com Sucesso!.");
-                        System.out.println("\"/    Opção 1 - Voltar ao menu Inicial     /\"");
-                        System.out.println("\"/    Opção 2 - Sair     /\"");
-                        int fim2 = input2.nextInt();
+                        } else {
+                            HiperExpress.getAdmCadastrado().add(novoAdministrador);
+                            System.out.println("Administrador cadastrado com Sucesso!.");
+                            System.out.println("\"/    Opção 1 - Voltar ao menu Inicial     /\"");
+                            System.out.println("\"/    Opção 2 - Sair     /\"");
+                            int fim2 = input2.nextInt();
                             switch (fim2) {
                                 case 1:
                                     menuadm();
@@ -358,8 +377,9 @@ if (CPFExistente) {
                                     System.exit(0);
                                 default:
                                     System.out.println("Opção invalida! ");
-                            }}
-                           
+                            }
+                        }
+
                     case 3:
                         boolean cpfExiste = false;
                         Scanner scanCliente = new Scanner(System.in);
@@ -416,20 +436,20 @@ if (CPFExistente) {
                         System.out.println("\"/    Opção 2 - Exclusão de Funcionario     /\"");
                         System.out.println("\"/    Opção 3 - Exclusão de Administrador     /\"");
                         int ExcOption = input.nextInt();
-                        switch (ExcOption){
-                            
+                        switch (ExcOption) {
+
                             case 1:
                                 System.out.println("Digite o CPF do Cliente: ");
                                 String cpfExclusao1 = input3.nextLine();
                                 excluirCLI(cpfExclusao1);
                                 menuadm();
-                            
+
                             case 2:
                                 System.out.println("Digite o CPF do Funcionario: ");
                                 String cpfExclusao2 = input3.nextLine();
                                 excluirFUN(cpfExclusao2);
                                 menuadm();
-                                
+
                             case 3:
                                 System.out.println("Digite o CPF do Administrador: ");
                                 String cpfExclusao3 = input3.nextLine();
@@ -439,42 +459,38 @@ if (CPFExistente) {
                                 System.out.println("Opção Invalida!");
                                 menuadm();
                         }
-     
-                        
-                       
 
                     case 5:
                         System.out.println("Digite a opção desejada: ");
                         System.out.println("\"/    Opção 1 - Cadastro de Clientes     /\"");
                         System.out.println("\"/    Opção 2 - Cadastro de Funcionarios   /\"");
                         System.out.println("\"/    Opção 3 - Cadastro de Administrador   /\"");
-                    int fim5 = input.nextInt();
-                    switch (fim5){
-                        case 1:
-                        System.out.println("----------CLIENTES CADASTRADOS----------");
-                        System.out.println("Quantidade total: " + HiperExpress.ClienteCadastrado().size() + " clientes cadastrados no sistema.");
-                        System.out.println(HiperExpress.getClienteCadastrado());
-                        menuadm();
-                        
-                        case 2:
-                         System.out.println("----------FUNCIONARIOS CADASTRADOS----------");
-                        System.out.println("Quantidade total: " + HiperExpress.getFuncionarioCadastrado().size() + " clientes cadastrados no sistema.");
-                        System.out.println(HiperExpress.getFuncionarioCadastrado());
-                        menuadm();
-                        
-                        case 3:
-                         System.out.println("----------ADMINISTRADORES CADASTRADOS----------");
-                         System.out.println("Quantidade total: " + HiperExpress.getAdmCadastrado().size() + " Administradores cadastrados no sistema.");
-                         System.out.println(HiperExpress.getAdmCadastrado());
-                         menuadm();
-                        
-                    }
+                        int fim5 = input.nextInt();
+                        switch (fim5) {
+                            case 1:
+                                System.out.println("----------CLIENTES CADASTRADOS----------");
+                                System.out.println("Quantidade total: " + HiperExpress.ClienteCadastrado().size() + " clientes cadastrados no sistema.");
+                                System.out.println(HiperExpress.getClienteCadastrado());
+                                menuadm();
+
+                            case 2:
+                                System.out.println("----------FUNCIONARIOS CADASTRADOS----------");
+                                System.out.println("Quantidade total: " + HiperExpress.getFuncionarioCadastrado().size() + " clientes cadastrados no sistema.");
+                                System.out.println(HiperExpress.getFuncionarioCadastrado());
+                                menuadm();
+
+                            case 3:
+                                System.out.println("----------ADMINISTRADORES CADASTRADOS----------");
+                                System.out.println("Quantidade total: " + HiperExpress.getAdmCadastrado().size() + " Administradores cadastrados no sistema.");
+                                System.out.println(HiperExpress.getAdmCadastrado());
+                                menuadm();
+
+                        }
 
                     case 6:
                         System.out.println("-----Obrigado pela preferência! Volte Sempre!-----");
                         System.exit(0);
-                      
-                        
+
                     case 2:
                         boolean CPFFExistente = false;
                         Scanner scanFun = new Scanner(System.in);
@@ -487,16 +503,16 @@ if (CPFExistente) {
                         String CpfFUN = scanFun.nextLine();
                         Funcionario novoFuncionario = new Funcionario(NomeFUN, SenhaFUN, CpfFUN);
                         for (Funcionario funcionario : HiperExpress.getFuncionarioCadastrado()) {
-                            if (funcionario.getCPF().equals(novoFuncionario.getCPF())){
+                            if (funcionario.getCPF().equals(novoFuncionario.getCPF())) {
                                 CPFFExistente = true;
                                 break;
                             }
                         }
-if (CPFFExistente) {
+                        if (CPFFExistente) {
                             System.out.println("Esse cpf já é funcionário do HiperExpress. Favor verificar.");
                             System.out.println("\"/    Opção 1 - Voltar ao menu Inicial     /\"");
-                            System.out.println("\"/    Opção 2 - Sair     /\""); 
-                        int fim2 = input2.nextInt();
+                            System.out.println("\"/    Opção 2 - Sair     /\"");
+                            int fim2 = input2.nextInt();
                             switch (fim2) {
                                 case 1:
                                     menuadm();
@@ -506,13 +522,12 @@ if (CPFFExistente) {
                                 default:
                                     System.out.println("Opção invalida! ");
                             }
-}
-                            else {
-                        HiperExpress.getFuncionarioCadastrado().add(novoFuncionario);
-                        System.out.println("Funcionário cadastrado com Sucesso!.");
-                        System.out.println("\"/    Opção 1 - Voltar ao menu Inicial     /\"");
-                        System.out.println("\"/    Opção 2 - Sair     /\"");
-                        int fim2 = input2.nextInt();
+                        } else {
+                            HiperExpress.getFuncionarioCadastrado().add(novoFuncionario);
+                            System.out.println("Funcionário cadastrado com Sucesso!.");
+                            System.out.println("\"/    Opção 1 - Voltar ao menu Inicial     /\"");
+                            System.out.println("\"/    Opção 2 - Sair     /\"");
+                            int fim2 = input2.nextInt();
                             switch (fim2) {
                                 case 1:
                                     menuadm();
@@ -521,11 +536,12 @@ if (CPFFExistente) {
                                     System.exit(0);
                                 default:
                                     System.out.println("Opção invalida!");
-                            }}
-}                
+                            }
+                        }
+                }
             case 5:
-            System.out.println("-----Obrigado pela preferência! Volte Sempre!-----");
-            System.exit(0);
+                System.out.println("-----Obrigado pela preferência! Volte Sempre!-----");
+                System.exit(0);
         }
 
     }
