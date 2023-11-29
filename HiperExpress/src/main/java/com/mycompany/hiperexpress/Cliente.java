@@ -12,6 +12,7 @@ public class Cliente {
 
     protected static int numClientes2 = 0;
 
+    
     public Cliente() {
         numClientes++;
     }
