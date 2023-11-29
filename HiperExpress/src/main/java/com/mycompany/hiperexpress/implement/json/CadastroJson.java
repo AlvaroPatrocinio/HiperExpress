@@ -192,7 +192,7 @@ public class CadastroJson {
                 String nome = (String) jsonObject.get("nome");
                 String telefone = (String) jsonObject.get("telefone");
                 String endereco = (String) jsonObject.get("endereco");
-                String cpf = (String) jsonObject.get("cpf");
+                String cpf = (String) jsonObject.get("cpf"); 
 
                 Cliente cliente = new Cliente(nome, telefone, endereco, cpf);
                 clientes.add(cliente);

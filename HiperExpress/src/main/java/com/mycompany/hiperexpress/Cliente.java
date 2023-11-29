@@ -1,56 +1,53 @@
 package com.mycompany.hiperexpress;
 
 public class Cliente {
-        
+
     private String nome;
     private String telefone;
     private String endereco;
     private String cpf;
-    
-    //Questão 11A - Segurança proporcionada pelo encapsulamento.
-    private static int numCliente = 0;
-    
-    //Questão 11B - Atributo protegido para acesso direto pelos filhos.
-    protected static int numClienteProtegido = 0;
-    
-    
-    /**
-     * Construtor padrão da classe <b>Cliente</b>, com um contador instanciado.
-     */
-    
-     public Cliente() {
-     numCliente++;
+    private int id;
+
+    private static int numClientes = 0;
+
+    protected static int numClientes2 = 0;
+
+    public Cliente() {
+        numClientes++;
     }
-    
-    
-    public static int getNumCliente(){
-        return numCliente;
+
+    public static int getNumClientes() {
+        return numClientes;
     }
-    
 
     public Cliente(String nome, String telefone, String endereco, String cpf) {
         this.nome = nome;
         this.telefone = telefone;
         this.endereco = endereco;
         this.cpf = cpf;
+        this.id = numClientes;
+        numClientes++;
+    }
+
+    public void editarCadastro(String novoNome, String novoTelefone, String novoEnd, String novoCPF) {
+        this.nome = novoNome;
+        this.telefone = novoTelefone;
+        this.endereco = novoEnd;
+        this.cpf = novoCPF;
     }
     
-    public void editarCadastro(String novoNome, String novoTelefone, String novoEnd, String novoCPF) {
-    this.nome = novoNome;
-    this.telefone = novoTelefone;
-    this.endereco = novoEnd;
-    this.cpf = novoCPF;
-}
-    
-   
+      public static int getNumClientes2() {
+        return numClientes2;
+    }
+
     public String getNome() {
         return nome;
     }
-    
+
     public void setNome(String nome) {
         this.nome = nome;
     }
-   
+
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
@@ -58,35 +55,35 @@ public class Cliente {
     public String getTelefone() {
         return telefone;
     }
-    
-    
-    
+
     public String getEndereco() {
         return endereco;
     }
-    
+
     public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
-    
+
     public String getCpf() {
         return cpf;
     }
-    
+
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
-    
-     @Override
-    public String toString(){
-        
-        return "\n------------------------------------------------------------------------"+""
-             + "\nNOME = " + this.getNome() + ""
-             + "\nTELEFONE = " + this.getTelefone() + ""
-             + "\nENDERECO = " + this.getEndereco()+ ""
-             + "\nCPF = " + this.getCpf()+ "" + "\n" +
-               "------------------------------------------------------------------------";
-
+    public int getId() {
+        return id;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+
+    @Override
+    public String toString() {
+        return "Cliente{" + "nome=" + nome + ", telefone=" + telefone + ", endereco=" + endereco + ", cpf=" + cpf + ", id=" + id + '}';
+    }
+
 }
