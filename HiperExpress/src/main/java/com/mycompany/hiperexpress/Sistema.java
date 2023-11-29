@@ -1,12 +1,17 @@
 package com.mycompany.hiperexpress;
 
 import com.mycompany.hiperexpress.implement.json.ProdutosJson;
+
 import com.mycompany.hiperexpress.implement.json.CadastroJson;
 
 import java.util.ArrayList;
+
 import java.util.Iterator;
+
 import java.util.List;
+
 import java.util.Scanner;
+
 import org.json.simple.JSONObject;
 
 public class Sistema {
@@ -14,6 +19,7 @@ public class Sistema {
     private static Scanner input = new Scanner(System.in);
     private static Scanner input2 = new Scanner(System.in);
     private static Scanner input3 = new Scanner(System.in);
+    
     private static ArrayList<Produto> produtos;
     private static ArrayList<Produto> carrinho;
     private static List<Caixa> caixas;
@@ -349,7 +355,8 @@ public class Sistema {
 
                             Produto produto1 = new Produto(Produtonome, Produtopreco, ProdutoCategoria, ProdutoQuantidade);
                             produtos.add(produto1);
-
+                            estoque.adicionarProduto(produto1, ProdutoQuantidade);
+                            
                             System.out.println("------------Produto Adicionado!------------");
 
                             // Chamando o método para escrever os produtos no arquivo JSON
