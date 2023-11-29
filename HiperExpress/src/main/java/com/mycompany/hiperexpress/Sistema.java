@@ -15,9 +15,9 @@ public class Sistema {
     private static Scanner input2 = new Scanner(System.in);
     private static Scanner input3 = new Scanner(System.in);
     private static ArrayList<Produto> produtos;
-    private static ArrayList<Produto> carrinho;
     private static List<Caixa> caixas;
     private Estoque estoque = new Estoque();
+
     private static Sistema instance;
 
     private Sistema() {
@@ -49,6 +49,7 @@ public class Sistema {
         // Inicialização da lista de produtos
         produtos = new ArrayList<>();
     }
+
     Venda venda = new Venda();
 
     private Produto encontrarProdutoPorNome(String nome) {
@@ -350,6 +351,8 @@ public class Sistema {
                             Produto produto1 = new Produto(Produtonome, Produtopreco, ProdutoCategoria, ProdutoQuantidade);
                             produtos.add(produto1);
 
+                            estoque.adicionarProduto(produto1, ProdutoQuantidade);
+                            
                             System.out.println("------------Produto Adicionado!------------");
 
                             // Chamando o método para escrever os produtos no arquivo JSON
