@@ -7,9 +7,26 @@ public class Cliente {
     private String endereco;
     private String cpf;
     
-    public Cliente(){
+    //Questão 11A - Segurança proporcionada pelo encapsulamento.
+    private static int numCliente = 0;
     
+    //Questão 11B - Atributo protegido para acesso direto pelos filhos.
+    protected static int numClienteProtegido = 0;
+    
+    
+    /**
+     * Construtor padrão da classe <b>Cliente</b>, com um contador instanciado.
+     */
+    
+     public Cliente() {
+     numCliente++;
     }
+    
+    
+    public static int getNumCliente(){
+        return numCliente;
+    }
+    
 
     public Cliente(String nome, String telefone, String endereco, String cpf) {
         this.nome = nome;
