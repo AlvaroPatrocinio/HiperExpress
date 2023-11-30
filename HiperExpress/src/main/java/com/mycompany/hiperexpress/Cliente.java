@@ -15,10 +15,13 @@ public class Cliente {
     /** Identificador único do cliente. */
     private int id;
     
+    //Questão 11A
     /** Número total de clientes criados. */
     private static int numClientes = 0;
+     //Questão 11B
       /** Número total de clientes criados, acessível mesmo por classes derivadas. */
     protected static int numClientes2 = 0;
+    
 
     
     /**
@@ -123,6 +126,7 @@ public class Cliente {
     * Retorna uma representação em formato de string do cliente.
     * @return Uma string representando as informações do cliente, incluindo nome, telefone, endereço, CPF e identificador único.
     */
+    //Questão 3
     @Override
     public String toString() {
         return "Cliente{" + "nome=" + nome + ", telefone=" + telefone + ", endereco=" + endereco + ", cpf=" + cpf + ", id=" + id + '}';

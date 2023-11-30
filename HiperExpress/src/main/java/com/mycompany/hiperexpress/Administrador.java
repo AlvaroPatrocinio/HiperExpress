@@ -18,6 +18,7 @@ public class Administrador extends Funcionario {
      * @param cpf O CPF do administrador.
      */
     public Administrador(String nome, String senha, String cpf) {
+        //Questão 4
         super(nome, senha, cpf);
         this.nome = nome;
         this.senha = senha;
@@ -76,6 +77,7 @@ public class Administrador extends Funcionario {
      * Retorna uma representação em formato de string do administrador.
      * @return Uma string representando as informações do administrador, incluindo nome, senha e CPF.
      */
+    //Questão 3
     @Override
     public String toString() {
         return "Administrador{" +

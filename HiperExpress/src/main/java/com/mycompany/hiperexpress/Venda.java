@@ -13,6 +13,14 @@ public class Venda {
     
     /** Lista de itens de venda na venda atual. */
     private List<ItemVenda> itensVenda;
+
+    public List<ItemVenda> getItensVenda() {
+        return itensVenda;
+    }
+
+    public void setItensVenda(List<ItemVenda> itensVenda) {
+        this.itensVenda = itensVenda;
+    }
     
       /** Data em que a venda foi realizada. */
     private Date dataVenda;
@@ -192,6 +200,7 @@ public class Venda {
          * Representação em formato de string do item de venda.
          * @return Uma string representando o item de venda.
          */
+        //Questão 3
         @Override
         public String toString() {
             return "ItemVenda{"

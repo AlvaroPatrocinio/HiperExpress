@@ -108,6 +108,7 @@ public class Funcionario {
      * Representação em formato de string do funcionário.
      * @return Uma string representando o funcionário.
      */
+    //Questão 3
     @Override
     public String toString() {
         return "Funcionario{" + "nome=" + nome + ", senha=" + senha + ", CPF=" + CPF + ", cargo=" + cargo + '}';

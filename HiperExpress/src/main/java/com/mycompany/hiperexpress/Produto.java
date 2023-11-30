@@ -123,6 +123,7 @@ public class Produto {
      * Representação em formato de string do produto.
      * @return Uma string representando o produto.
      */
+    //Questão 3
     @Override
     public String toString() {
         return "Produto{" + "nome=" + nome + ", valorDoProduto=" + valorDoProduto + ", id=" + id + ", categoria=" + categoria + ", quantidade=" + quantidade + '}';

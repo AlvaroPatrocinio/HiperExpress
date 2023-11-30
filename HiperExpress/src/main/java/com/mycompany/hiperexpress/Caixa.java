@@ -59,6 +59,7 @@ public class Caixa {
      *
      * @return Uma string que representa o objeto.
      */
+    //Questão 3
     @Override
     public String toString() {
         return "Caixa " +
